@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Иллюстрированная научно-популярная статья о плавании: физика воды, работа организма, техника, история, чемпионы и безопасность.">
+  <title>Плавание: наука движения в воде</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --paper: #f5f4ef;
+      --surface: #ffffff;
+      --ink: #152b35;
+      --muted: #60717a;
+      --line: #dbe3e2;
+      --deep: #102d3c;
+      --deep-2: #174657;
+      --teal: #087c82;
+      --aqua: #9cddd8;
+      --lime: #e0eeab;
+      --coral: #ef8c70;
+      --shadow: 0 22px 70px rgba(16, 45, 60, .09);
+      --radius: 24px;
+      --content: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "DM Sans", "Manrope", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.dark {
+      --paper: #0b202a;
+      --surface: #14313d;
+      --ink: #ecf6f4;
+      --muted: #adc3c7;
+      --line: #31505a;
+      --shadow: 0 22px 70px rgba(0, 0, 0, .17);
+    }
+    a { color: inherit; }
+    button { font: inherit; }
+    ::selection { background: var(--aqua); color: #102d3c; }
+    :focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; }
+    .skip-link {
+      position: absolute; left: 16px; top: -70px; z-index: 50;
+      padding: 10px 16px; background: white; color: #102d3c; border-radius: 10px;
+    }
+    .skip-link:focus { top: 12px; }
+
+    .progress {
+      position: fixed; z-index: 40; top: 0; left: 0; height: 4px; width: 0;
+      background: linear-gradient(90deg, #ef8c70, #9cddd8); pointer-events: none;
+    }
+    .site-header {
+      position: relative; z-index: 10; background: var(--paper);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      max-width: calc(var(--content) + 48px); min-height: 78px; padding: 0 24px;
+      margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-weight: 800; letter-spacing: -.05em; font-size: 21px; }
+    .brand-mark {
+      width: 35px; height: 35px; display: grid; place-items: center; border-radius: 11px;
+      background: var(--deep); color: var(--aqua); font-size: 25px; line-height: 1;
+    }
+    .header-right { display: flex; align-items: center; gap: 27px; }
+    .header-nav { display: flex; gap: 25px; }
+    .header-nav a { color: var(--muted); font-size: 13px; font-weight: 700; text-decoration: none; }
+    .header-nav a:hover { color: var(--teal); }
+    .theme-toggle {
+      width: 39px; height: 39px; display: grid; place-items: center; cursor: pointer;
+      border: 1px solid var(--line); border-radius: 50%; background: var(--surface);
+      color: var(--ink); font-size: 18px;
+    }
+
+    .hero {
+      overflow: hidden; position: relative; isolation: isolate; color: white;
+      background: radial-gradient(circle at 80% 30%, #226575 0, transparent 35%),
+                  linear-gradient(115deg, #102d3c 10%, #123746 54%, #1b5862 100%);
+    }
+    .hero::before, .hero::after {
+      content: ""; position: absolute; border: 1px solid rgba(179, 234, 225, .13);
+      border-radius: 50%; transform: rotate(-17deg); pointer-events: none;
+    }
+    .hero::before { width: 910px; height: 410px; right: -250px; top: 100px; }
+    .hero::after { width: 1040px; height: 510px; right: -290px; top: 50px; }
+    .hero-inner {
+      max-width: calc(var(--content) + 48px); margin: auto; padding: 94px 24px 92px;
+      display: grid; grid-template-columns: 1.07fr .93fr; align-items: center; gap: 28px;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 800; letter-spacing: .19em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 25px; height: 2px; background: var(--coral); }
+    .hero .eyebrow { color: var(--aqua); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: "Manrope", Arial, sans-serif; }
+    h1 {
+      max-width: 700px; margin: 25px 0 24px; font-size: clamp(48px, 6.1vw, 86px);
+      line-height: 1.08; letter-spacing: -.075em; font-weight: 800;
+    }
+    h1 em { color: var(--aqua); font-style: normal; }
+    .hero-lead { max-width: 540px; color: #c8dcde; font-size: clamp(16px, 1.65vw, 20px); line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 13px; margin-top: 35px; color: #bbd1d3; font-size: 12px; font-weight: 700; letter-spacing: .03em; }
+    .meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--coral); }
+    .hero-art { width: 100%; max-width: 520px; justify-self: end; filter: drop-shadow(0 30px 55px rgba(0,0,0,.14)); }
+    .hero-art svg { width: 100%; height: auto; display: block; }
+
+    .article-shell {
+      max-width: calc(var(--content) + 48px); padding: 0 24px; margin: auto;
+      display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 65px;
+    }
+    .toc { padding-top: 83px; }
+    .toc-inner { position: sticky; top: 28px; }
+    .toc-label { color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 24px; }
+    .toc a {
+      display: block; margin: 0 0 7px; padding: 9px 0 9px 16px; border-left: 2px solid var(--line);
+      color: var(--muted); font-size: 13px; font-weight: 700; line-height: 1.35; text-decoration: none;
+      transition: color .2s, border-color .2s;
+    }
+    .toc a:hover, .toc a.active { color: var(--teal); border-color: var(--teal); }
+    .toc-note { margin-top: 32px; padding: 17px; background: var(--surface); border: 1px solid var(--line); border-radius: 15px; color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .toc-note strong { display: block; margin-bottom: 5px; color: var(--ink); }
+
+    .article { min-width: 0; padding: 78px 0 110px; }
+    .intro { max-width: 770px; margin-bottom: 70px; }
+    .intro .drop { font-size: clamp(21px, 2.6vw, 29px); font-weight: 700; line-height: 1.5; letter-spacing: -.03em; }
+    .intro p:last-child { margin-bottom: 0; }
+    .article p { color: var(--muted); font-size: 15px; line-height: 1.85; }
+    .article strong { color: var(--ink); }
+    .section { scroll-margin-top: 35px; padding-top: 42px; margin-top: 35px; border-top: 1px solid var(--line); }
+    .section-heading { display: flex; gap: 19px; align-items: baseline; margin-bottom: 23px; }
+    .section-number { color: var(--teal); font-size: 12px; font-weight: 800; letter-spacing: .1em; }
+    h2 { margin: 0; font-size: clamp(29px, 3.5vw, 43px); line-height: 1.22; letter-spacing: -.055em; }
+    h3 { font-size: 19px; letter-spacing: -.035em; line-height: 1.35; }
+    .section > p { max-width: 755px; }
+
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 30px 0; }
+    .feature-card { padding: 24px 20px 22px; border-radius: 19px; background: var(--surface); border: 1px solid var(--line); }
+    .feature-icon { display: grid; place-items: center; width: 39px; height: 39px; border-radius: 12px; background: #ddf0ed; color: #0c6971; font-size: 20px; margin-bottom: 21px; }
+    .feature-card h3 { margin-bottom: 8px; font-size: 16px; }
+    .feature-card p { margin: 0; font-size: 13px; line-height: 1.65; }
+
+    .formula-panel {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 25px; align-items: center;
+      margin: 30px 0 16px; padding: 32px; border-radius: var(--radius);
+      color: #fff; background: #153c4b; overflow: hidden;
+    }
+    .formula-panel h3 { margin-bottom: 10px; }
+    .formula-panel p { color: #b9d3d5; font-size: 13px; margin: 0; }
+    .formula {
+      padding: 23px 15px; text-align: center; color: var(--aqua); font-family: Georgia, serif;
+      font-size: clamp(22px, 3vw, 34px); font-style: italic; white-space: nowrap;
+      border: 1px solid rgba(156, 221, 216, .22); border-radius: 15px;
+      background: rgba(255,255,255,.04);
+    }
+    .caption { font-size: 12px !important; color: var(--muted); }
+
+    .quote {
+      position: relative; margin: 34px 0; padding: 27px 31px 26px;
+      border-left: 4px solid var(--coral); background: var(--surface); border-radius: 0 18px 18px 0;
+      box-shadow: var(--shadow);
+    }
+    .quote p { margin: 0; font-size: 19px; font-weight: 700; line-height: 1.6; color: var(--ink); letter-spacing: -.025em; }
+
+    .stroke-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 30px 0; }
+    .stroke { min-height: 175px; position: relative; overflow: hidden; padding: 24px; border: 1px solid var(--line); border-radius: 19px; background: var(--surface); }
+    .stroke::after { content: attr(data-number); position: absolute; right: 13px; top: -23px; font-family: "Manrope", sans-serif; font-size: 107px; font-weight: 800; line-height: 1; color: var(--line); opacity: .55; z-index: 0; }
+    .stroke > * { position: relative; z-index: 1; }
+    .stroke h3 { margin-bottom: 8px; }
+    .stroke p { max-width: 280px; font-size: 13px; line-height: 1.7; margin: 0; }
+    .stroke-tag { display: inline-block; margin-bottom: 14px; color: var(--teal); font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+
+    .aside-box { margin: 30px 0; padding: 25px 28px; background: #e7f1e4; border-radius: 18px; }
+    .aside-box h3 { margin-bottom: 8px; color: #214b3f; }
+    .aside-box p { margin: 0; color: #47645c; font-size: 13px; }
+    .dark .aside-box { background: #244c45; }
+    .dark .aside-box h3, .dark .aside-box p { color: #e2f2df; }
+
+    .timeline { margin: 31px 0; border-left: 2px solid var(--line); }
+    .timeline-item { position: relative; padding: 0 0 26px 27px; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before { content: ""; position: absolute; width: 10px; height: 10px; left: -6px; top: 5px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 0 5px var(--paper); }
+    .timeline-item small { color: var(--teal); font-size: 12px; font-weight: 800; }
+    .timeline-item h3 { margin: 3px 0 5px; font-size: 16px; }
+    .timeline-item p { margin: 0; font-size: 13px; }
+
+    .champions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 29px 0; }
+    .champion { display: flex; flex-direction: column; min-height: 220px; padding: 25px; border-radius: 19px; background: var(--surface); border: 1px solid var(--line); }
+    .champion:nth-child(1) { background: #dcefeb; }
+    .champion:nth-child(4) { background: #f3e6d9; }
+    .dark .champion:nth-child(1) { background: #214f50; }
+    .dark .champion:nth-child(4) { background: #544538; }
+    .champion-top { display: flex; align-items: start; justify-content: space-between; gap: 10px; margin-bottom: 27px; }
+    .champion-country { color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .champion-symbol { font-size: 27px; line-height: 1; }
+    .champion h3 { margin-bottom: 8px; font-size: 20px; }
+    .champion p { margin: 0; font-size: 13px; line-height: 1.7; }
+
+    .safety-list { display: grid; grid-template-columns: 1fr 1fr; gap: 13px 30px; margin: 24px 0 33px; padding: 0; list-style: none; }
+    .safety-list li { position: relative; padding-left: 26px; color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .safety-list li::before { content: "✓"; position: absolute; top: 0; left: 0; color: var(--teal); font-weight: 800; }
+
+    .sources { padding: 26px 30px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); }
+    .sources h3 { margin-bottom: 12px; }
+    .sources ol { margin: 0; padding-left: 19px; }
+    .sources li { padding: 5px 0; color: var(--muted); font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
+    .sources a { color: var(--teal); text-underline-offset: 3px; }
+
+    .footer { background: var(--deep); color: #d5e6e7; }
+    .footer-inner { max-width: calc(var(--content) + 48px); margin: auto; padding: 31px 24px; display: flex; justify-content: space-between; gap: 20px; align-items: center; font-size: 12px; }
+    .footer strong { color: white; font-size: 15px; }
+    .footer a { color: var(--aqua); text-decoration: none; }
+
+    @media (max-width: 950px) {
+      .article-shell { grid-template-columns: 170px minmax(0, 1fr); gap: 35px; }
+      .hero-inner { padding-top: 75px; padding-bottom: 75px; }
+    }
+    @media (max-width: 720px) {
+      .header-nav { display: none; }
+      .header-inner { min-height: 68px; }
+      .hero-inner { grid-template-columns: 1fr; padding-top: 66px; padding-bottom: 52px; }
+      .hero-art { max-width: 450px; justify-self: center; margin-top: -12px; }
+      .article-shell { display: block; }
+      .toc { padding-top: 25px; }
+      .toc-inner { position: static; }
+      .toc-label, .toc-note { display: none; }
+      .toc-links { display: flex; gap: 7px; overflow-x: auto; padding-bottom: 9px; scrollbar-width: thin; }
+      .toc a { flex: none; margin: 0; padding: 7px 11px; border: 1px solid var(--line); border-radius: 30px; white-space: nowrap; font-size: 12px; background: var(--surface); }
+      .toc a.active { border-color: var(--teal); }
+      .article { padding-top: 45px; padding-bottom: 75px; }
+      .intro { margin-bottom: 35px; }
+    }
+    @media (max-width: 520px) {
+      .hero-inner, .article-shell, .header-inner, .footer-inner { padding-left: 19px; padding-right: 19px; }
+      .hero-inner { padding-top: 56px; }
+      .hero-art { margin-top: -25px; }
+      .feature-grid, .stroke-list, .champions, .safety-list, .formula-panel { grid-template-columns: 1fr; }
+      .feature-card { padding: 20px; }
+      .feature-icon { margin-bottom: 12px; }
+      .stroke { min-height: 150px; }
+      .formula-panel { gap: 19px; padding: 24px; }
+      .champion { min-height: 185px; }
+      .champion-top { margin-bottom: 17px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к статье</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="Акватория — на главную">
+        <span class="brand-mark" aria-hidden="true">≈</span>
+        <span>акватория<span style="color:var(--teal)">.</span></span>
+      </a>
+      <div class="header-right">
+        <nav class="header-nav" aria-label="Основная навигация">
+          <a href="#physics">Наука</a>
+          <a href="#styles">Стили</a>
+          <a href="#champions">Чемпионы</a>
+          <a href="#safety">Безопасность</a>
+        </nav>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Включить тёмную тему" title="Сменить тему">☾</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-inner">
+        <div>
+          <span class="eyebrow">Наука × движение × вода</span>
+          <h1 id="page-title">Человек<br>в своей <em>стихии</em></h1>
+          <p class="hero-lead">Почему мы держимся на воде, что замедляет пловца и как несколько точных движений превращаются в выдающийся результат.</p>
+          <div class="hero-meta">
+            <span>Научно-популярная статья</span><span class="meta-dot"></span>
+            <span>≈ 12 минут чтения</span><span class="meta-dot"></span>
+            <span>От физики до Олимпиады</span>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <svg viewBox="0 0 550 500" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="water" x1="0" x2="1" y1="0" y2="1">
+                <stop stop-color="#b7ede3"/>
+                <stop offset="1" stop-color="#52adad"/>
+              </linearGradient>
+              <linearGradient id="pool" x1="0" x2="1" y1="0" y2="1">
+                <stop stop-color="#225e69"/>
+                <stop offset="1" stop-color="#103b4b"/>
+              </linearGradient>
+              <clipPath id="circleClip"><circle cx="276" cy="251" r="210"/></clipPath>
+            </defs>
+            <circle cx="276" cy="251" r="218" fill="#a9ded6" opacity=".12"/>
+            <circle cx="276" cy="251" r="210" fill="url(#pool)"/>
+            <g clip-path="url(#circleClip)">
+              <path d="M-10 187 C90 153 155 214 262 179 S425 145 568 194" fill="none" stroke="#a8ded7" stroke-opacity=".18" stroke-width="13"/>
+              <path d="M-12 245 C100 205 150 276 270 236 S420 205 570 254" fill="none" stroke="#b9eee5" stroke-opacity=".16" stroke-width="12"/>
+              <path d="M-12 306 C115 266 151 331 273 293 S428 264 570 310" fill="none" stroke="#b9eee5" stroke-opacity=".17" stroke-width="11"/>
+              <path d="M-12 369 C94 326 181 390 281 354 S432 324 570 374" fill="none" stroke="#b9eee5" stroke-opacity=".13" stroke-width="10"/>
+              <path d="M48 154 Q139 132 198 155" fill="none" stroke="#b2e7df" stroke-opacity=".4" stroke-width="2"/>
+              <path d="M365 390 Q438 366 522 387" fill="none" stroke="#b2e7df" stroke-opacity=".35" stroke-width="2"/>
+              <!-- Stylized swimmer, viewed from above -->
+              <path d="M210 247 C178 241 156 236 113 220" fill="none" stroke="#f1ad8d" stroke-width="17" stroke-linecap="round"/>
+              <path d="M113 220 L86 190" fill="none" stroke="#f1ad8d" stroke-width="13" stroke-linecap="round"/>
+              <path d="M314 248 C362 244 397 225 422 192" fill="none" stroke="#f1ad8d" stroke-width="17" stroke-linecap="round"/>
+              <path d="M422 192 L442 164" fill="none" stroke="#f1ad8d" stroke-width="12" stroke-linecap="round"/>
+              <path d="M228 253 C242 226 285 219 309 239 C323 255 312 282 292 291 L244 291 C221 278 216 267 228 253Z" fill="#e88d75"/>
+              <path d="M239 274 Q269 290 302 269" fill="none" stroke="#d47a69" stroke-width="3" opacity=".6"/>
+              <path d="M246 291 L234 356 L218 423" fill="none" stroke="#f1ad8d" stroke-width="19" stroke-linecap="round"/>
+              <path d="M292 290 L315 355 L345 413" fill="none" stroke="#f1ad8d" stroke-width="19" stroke-linecap="round"/>
+              <path d="M217 421 L194 439 M345 412 L361 431" fill="none" stroke="#f1ad8d" stroke-width="12" stroke-linecap="round"/>
+              <circle cx="269" cy="206" r="33" fill="#edaa8b"/>
+              <path d="M237 206 Q234 170 266 172 Q298 170 301 203 Q274 189 237 206Z" fill="#182d39"/>
+              <path d="M241 204 Q269 196 297 203" fill="none" stroke="#b8e6dd" stroke-width="7" stroke-linecap="round"/>
+              <rect x="244" y="198" width="22" height="12" rx="6" fill="#183a48"/>
+              <rect x="273" y="198" width="22" height="12" rx="6" fill="#183a48"/>
+              <path d="M266 203 H273" stroke="#183a48" stroke-width="4"/>
+              <path d="M50 283 Q88 268 122 282 M405 295 Q446 281 487 297 M67 344 Q113 330 146 346" fill="none" stroke="#c1eee8" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="170" cy="193" r="4" fill="#c1eee8" opacity=".7"/>
+              <circle cx="380" cy="350" r="5" fill="#c1eee8" opacity=".5"/>
+              <circle cx="414" cy="115" r="3" fill="#c1eee8" opacity=".6"/>
+            </g>
+            <circle cx="276" cy="251" r="210" fill="none" stroke="#a9e4dc" stroke-opacity=".6" stroke-width="2"/>
+            <circle cx="472" cy="79" r="7" fill="#ef8c70"/>
+            <circle cx="63" cy="419" r="5" fill="#dfeaab"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <div class="article-shell">
+      <aside class="toc" aria-label="Содержание статьи">
+        <div class="toc-inner">
+          <div class="toc-label">В этой статье</div>
+          <nav class="toc-links">
+            <a href="#physics">Физика воды</a>
+            <a href="#body">Тело и нагрузка</a>
+            <a href="#styles">Четыре стиля</a>
+            <a href="#details">Тонкости техники</a>
+            <a href="#history">История спорта</a>
+            <a href="#champions">Люди-легенды</a>
+            <a href="#safety">Плавать безопасно</a>
+            <a href="#sources">Источники</a>
+          </nav>
+          <div class="toc-note">
+            <strong>Главная мысль</strong>
+            Хорошее плавание — это не только сила. Это умение уменьшать сопротивление воды и разумно расходовать энергию.
+          </div>
+        </div>
+      </aside>
+
+      <article class="article">
+        <div class="intro">
+          <p class="drop">Плавание кажется естественным: вдох, гребок, скольжение. Но за каждым метром скрывается маленький эксперимент по физике и физиологии.</p>
+          <p>Вода поддерживает тело и одновременно мешает ему двигаться. Мышцы создают тягу, лёгкие помогают сохранять плавучесть, а положение головы иногда влияет на скорость сильнее, чем ещё один мощный гребок. Разберёмся, как устроено это взаимодействие — и почему бассейн остаётся местом для открытий даже у чемпионов.</p>
+        </div>
+
+        <section class="section" id="physics">
+          <div class="section-heading"><span class="section-number">01 /</span><h2>Физика: союзник и соперник</h2></div>
+          <p>Оказавшись в воде, человек испытывает <strong>выталкивающую силу</strong>: по закону Архимеда она равна весу вытесненной воды. Поэтому объём тела, распределение массы и воздух в лёгких влияют на то, как легко держаться на поверхности. Полный вдох обычно немного повышает плавучесть, но сам по себе не заменяет навыка спокойного дыхания и устойчивого положения тела.</p>
+
+          <div class="feature-grid">
+            <div class="feature-card">
+              <span class="feature-icon" aria-hidden="true">↑</span>
+              <h3>Плавучесть</h3>
+              <p>Вода частично поддерживает вес тела. Отсюда ощущение лёгкости, хотя мышцы продолжают работать.</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon" aria-hidden="true">≈</span>
+              <h3>Сопротивление</h3>
+              <p>Вода тормозит движение: важны форма тела, волны у поверхности и направление гребка.</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon" aria-hidden="true">→</span>
+              <h3>Тяга</h3>
+              <p>Руки и ноги передают воде импульс; вода в ответ действует на пловца и продвигает его вперёд.</p>
+            </div>
+          </div>
+
+          <p>Когда скорость растёт, сопротивление становится особенно заметным. Для упрощённого описания обтекания используют выражение:</p>
+          <div class="formula-panel">
+            <div>
+              <h3>Цена скорости</h3>
+              <p>При прочих равных сопротивление в этой модели пропорционально квадрату скорости. Поэтому ускориться становится всё труднее.</p>
+            </div>
+            <div class="formula" aria-label="Сила сопротивления приблизительно равна одной второй произведения плотности воды, коэффициента сопротивления, площади и квадрата скорости">
+              F<sub>сопр</sub> ≈ ½ρC<sub>d</sub>Av²
+            </div>
+          </div>
+          <p class="caption">Здесь ρ — плотность воды, C<sub>d</sub> — коэффициент сопротивления, A — характерная площадь, v — скорость. Это полезная модель, а не точное описание всех потоков вокруг пловца.</p>
+          <p>Из той же модели следует важный нюанс: <strong>мощность, необходимая лишь для преодоления такого сопротивления, растёт примерно как куб скорости</strong>. На практике картина сложнее: пловец меняет положение тела, а движение рук и ног создаёт нестационарные потоки. Тем не менее вывод остаётся верным по смыслу — обтекаемость невероятно ценна.</p>
+
+          <blockquote class="quote">
+            <p>Самый «дешёвый» метр в плавании — тот, на котором вы не толкаете воду перед собой без необходимости.</p>
+          </blockquote>
+        </section>
+
+        <section class="section" id="body">
+          <div class="section-heading"><span class="section-number">02 /</span><h2>Что происходит с телом</h2></div>
+          <p>Плавание нагружает сердечно-сосудистую и дыхательную системы, вовлекает мышцы корпуса, плечевого пояса и ног. При этом поддержка воды уменьшает ударную нагрузку по сравнению, например, с бегом. Но «меньше ударов» не означает «подходит каждому без ограничений»: интенсивность, техника и состояние здоровья имеют значение.</p>
+          <p><strong>Дыхание в воде отличается от обычного.</strong> Вдох приходится согласовывать с фазой движения, а выдох — выполнять в воду. Новички нередко задерживают дыхание и быстро устают не из-за слабых мышц, а из-за нарушенного ритма. Спокойный, непрерывный выдох помогает избежать ощущения, что воздуха катастрофически мало.</p>
+          <p>Вода также отводит тепло быстрее воздуха. Даже если бассейн кажется комфортным, длительное пребывание в прохладной воде может привести к переохлаждению. А поскольку нагрузка ощущается иначе, чем на суше, о высокой интенсивности иногда судят по утомлению уже после тренировки.</p>
+
+          <div class="aside-box">
+            <h3>Любопытный парадокс</h3>
+            <p>В воде можно чувствовать себя невесомым — и одновременно выполнять серьёзную физическую работу. Поддержка тела и сопротивление движению существуют вместе, а не исключают друг друга.</p>
+          </div>
+          <p>Для здоровья важнее регулярность и подходящая нагрузка, чем погоня за рекордами. Начинать разумно с комфортных коротких отрезков и пауз, постепенно увеличивая объём. Если есть заболевания сердца или лёгких, ограничения подвижности либо другие медицинские вопросы, режим занятий лучше обсудить со специалистом.</p>
+        </section>
+
+        <section class="section" id="styles">
+          <div class="section-heading"><span class="section-number">03 /</span><h2>Четыре способа двигаться</h2></div>
+          <p>В спортивном плавании выделяют четыре основных стиля. Они различаются не только внешним рисунком движений: каждый предъявляет свои требования к координации, гибкости и работе с сопротивлением воды.</p>
+
+          <div class="stroke-list">
+            <div class="stroke" data-number="01">
+              <span class="stroke-tag">Вольный стиль</span>
+              <h3>Кроль на груди</h3>
+              <p>Попеременные гребки руками, работа ногами и поворот корпуса. В соревнованиях вольным стилем почти всегда плывут именно кролем.</p>
+            </div>
+            <div class="stroke" data-number="02">
+              <span class="stroke-tag">На спине</span>
+              <h3>Кроль на спине</h3>
+              <p>Лицо остаётся над водой, но ориентироваться приходится по потолку и разметке. Положение таза важно для уменьшения сопротивления.</p>
+            </div>
+            <div class="stroke" data-number="03">
+              <span class="stroke-tag">Брасс</span>
+              <h3>Симметрия движений</h3>
+              <p>Руки и ноги работают одновременно и симметрично. Ритм «гребок — вдох — толчок — скольжение» здесь особенно заметен.</p>
+            </div>
+            <div class="stroke" data-number="04">
+              <span class="stroke-tag">Баттерфляй</span>
+              <h3>Волна всем телом</h3>
+              <p>Синхронные гребки сочетаются с волнообразным движением корпуса и ног. Стиль требует точного ритма и больших усилий.</p>
+            </div>
+          </div>
+          <p>Есть и <strong>комплексное плавание</strong>: спортсмен последовательно проходит дистанцию всеми четырьмя стилями. В индивидуальном комплексе порядок такой: баттерфляй, спина, брасс, вольный стиль. В комбинированной эстафете он другой: спина, брасс, баттерфляй, вольный стиль — потому что первый участник стартует из воды.</p>
+        </section>
+
+        <section class="section" id="details">
+          <div class="section-heading"><span class="section-number">04 /</span><h2>Секунды прячутся в деталях</h2></div>
+          <p><strong>Вытянутое положение после старта и поворота.</strong> Когда руки сведены впереди, голова находится между ними, а корпус вытянут, пловец уменьшает сопротивление. На соревнованиях подводная часть ограничена правилами: в большинстве дисциплин после старта и каждого поворота нужно выйти на поверхность не позднее отметки 15 метров.</p>
+          <p><strong>Волны тоже тормозят.</strong> У поверхности пловец тратит часть энергии на создание волн. Под водой волновое сопротивление может быть меньше — одна из причин, почему квалифицированные спортсмены уделяют столько внимания подводным движениям после отталкивания от стенки.</p>
+          <p><strong>Поворот — это часть дистанции.</strong> В 25-метровом бассейне поворотов больше, чем на той же дистанции в 50-метровом. Результаты для короткой и длинной воды поэтому учитывают отдельно: условия прохождения дистанции различаются.</p>
+          <p><strong>Гребок не обязан быть максимально частым.</strong> Если ради частоты руки перестают эффективно взаимодействовать с водой, скорость может не вырасти. Спортсмен ищет баланс между длиной гребка, его частотой и устойчивым положением тела.</p>
+
+          <blockquote class="quote">
+            <p>Техника — это искусство превращать усилие в движение вперёд, а не в лишние брызги.</p>
+          </blockquote>
+        </section>
+
+        <section class="section" id="history">
+          <div class="section-heading"><span class="section-number">05 /</span><h2>От переправы до рекорда</h2></div>
+          <p>Люди плавали задолго до появления дорожек и секундомеров. Но превращение навыка в спорт потребовало правил, соревнований и способов сравнивать результаты. История плавания — это ещё и история того, как менялись представления об эффективном движении.</p>
+          <div class="timeline">
+            <div class="timeline-item">
+              <small>Древность</small>
+              <h3>Навык выживания</h3>
+              <p>Изображения пловцов встречаются в древних культурах; умение держаться на воде было практической необходимостью.</p>
+            </div>
+            <div class="timeline-item">
+              <small>XIX век</small>
+              <h3>Появление организованных стартов</h3>
+              <p>Создаются клубы, проводятся регулярные соревнования, постепенно оформляются спортивные правила.</p>
+            </div>
+            <div class="timeline-item">
+              <small>1896 и 1912</small>
+              <h3>Олимпийская программа</h3>
+              <p>Мужское плавание вошло в программу первых современных Олимпийских игр; женские соревнования появились в 1912 году.</p>
+            </div>
+            <div class="timeline-item">
+              <small>XX–XXI века</small>
+              <h3>Точность до сотых</h3>
+              <p>Электронный хронометраж, анализ техники и развитие тренировок сделали борьбу за доли секунды привычной частью спорта.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="champions">
+          <div class="section-heading"><span class="section-number">06 /</span><h2>Люди, изменившие воду</h2></div>
+          <p>История рекордов — не только таблица времени. За каждым результатом стоят годы работы над техникой, тактикой и способностью сохранять точность движений под давлением. Вот четыре спортсмена, чьи достижения особенно ярко показывают разные стороны плавания.</p>
+
+          <div class="champions">
+            <div class="champion">
+              <div class="champion-top"><span class="champion-country">США · универсальность</span><span class="champion-symbol" aria-hidden="true">✳</span></div>
+              <h3>Майкл Фелпс</h3>
+              <p>28 олимпийских медалей, из них 23 золотые — рекорд Олимпийских игр. Выступал в баттерфляе, вольном стиле, комплексе и эстафетах.</p>
+            </div>
+            <div class="champion">
+              <div class="champion-top"><span class="champion-country">США · дистанция</span><span class="champion-symbol" aria-hidden="true">↝</span></div>
+              <h3>Кэти Ледеки</h3>
+              <p>Одна из сильнейших пловчих на длинных дистанциях. По итогам Игр 2024 года — 14 олимпийских медалей, включая 9 золотых.</p>
+            </div>
+            <div class="champion">
+              <div class="champion-top"><span class="champion-country">Россия · скорость</span><span class="champion-symbol" aria-hidden="true">➝</span></div>
+              <h3>Александр Попов</h3>
+              <p>Четырёхкратный олимпийский чемпион, прославившийся спринтом вольным стилем. Его плавание часто вспоминают как пример экономичной техники.</p>
+            </div>
+            <div class="champion">
+              <div class="champion-top"><span class="champion-country">Франция · новое поколение</span><span class="champion-symbol" aria-hidden="true">✦</span></div>
+              <h3>Леон Маршан</h3>
+              <p>На домашней Олимпиаде в Париже в 2024 году выиграл четыре личных золота: в комплексе, брассе и баттерфляе.</p>
+            </div>
+          </div>
+          <p class="caption">Олимпийские достижения приведены по итогам Игр 2024 года.</p>
+        </section>
+
+        <section class="section" id="safety">
+          <div class="section-heading"><span class="section-number">07 /</span><h2>Свобода начинается с безопасности</h2></div>
+          <p>Уверенность в воде не делает человека неуязвимым. Усталость, холод, течение и незнакомое дно способны быстро изменить ситуацию. Несколько простых правил полезны и новичкам, и опытным пловцам.</p>
+          <ul class="safety-list">
+            <li>Плавайте в разрешённых местах и обращайте внимание на предупреждения спасателей.</li>
+            <li>Не заходите в открытую воду в одиночку; сообщайте близким о маршруте.</li>
+            <li>Не ныряйте там, где неизвестны глубина и состояние дна.</li>
+            <li>Не плавайте после употребления алкоголя.</li>
+            <li>Приглядывайте за детьми постоянно и с близкого расстояния, даже если они умеют плавать.</li>
+            <li>Не выполняйте длительные задержки дыхания и не гипервентилируйте перед подводным плаванием: это опасно.</li>
+          </ul>
+          <p>И, пожалуй, самое важное: <strong>научиться плавать — значит освоить не только гребок, но и спокойное поведение в воде</strong>. Умение перевернуться на спину, восстановить дыхание и позвать на помощь может оказаться ценнее скорости.</p>
+        </section>
+
+        <section class="section" id="sources">
+          <div class="section-heading"><span class="section-number">08 /</span><h2>Для любознательных</h2></div>
+          <p>Статья носит научно-популярный характер. Для дальнейшего чтения и проверки сведений:</p>
+          <div class="sources">
+            <h3>Источники и справочные материалы</h3>
+            <ol>
+              <li><a href="https://www.who.int/publications/i/item/9789240015128" target="_blank" rel="noopener noreferrer">ВОЗ — Guidelines on physical activity and sedentary behaviour</a>: рекомендации по физической активности.</li>
+              <li><a href="https://www.cdc.gov/drowning/prevention/index.html" target="_blank" rel="noopener noreferrer">CDC — Drowning Prevention</a>: правила безопасности на воде.</li>
+              <li><a href="https://www.britannica.com/sports/swimming-sport" target="_blank" rel="noopener noreferrer">Encyclopaedia Britannica — Swimming</a>: история и основы спортивного плавания.</li>
+              <li><a href="https://olympics.com/en/sports/swimming/" target="_blank" rel="noopener noreferrer">Olympics — Swimming</a>: дисциплины, правила и олимпийская история.</li>
+            </ol>
+          </div>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div><strong>акватория.</strong><br>Небольшое погружение в большую науку.</div>
+      <a href="#top">Вернуться к началу ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const progress = document.getElementById('progress');
+      const toggle = document.getElementById('themeToggle');
+      const links = [...document.querySelectorAll('.toc a')];
+      const sections = [...document.querySelectorAll('.article .section')];
+
+      function updateProgress() {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        progress.style.width = (scrollable > 0 ? window.scrollY / scrollable * 100 : 0) + '%';
+      }
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      window.addEventListener('resize', updateProgress);
+      updateProgress();
+
+      function setTheme(dark) {
+        document.body.classList.toggle('dark', dark);
+        toggle.textContent = dark ? '☀' : '☾';
+        toggle.setAttribute('aria-label', dark ? 'Включить светлую тему' : 'Включить тёмную тему');
+        try { localStorage.setItem('aquatoria-theme', dark ? 'dark' : 'light'); } catch (_) {}
+      }
+      try {
+        const saved = localStorage.getItem('aquatoria-theme');
+        setTheme(saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
+      } catch (_) {
+        setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
+      }
+      toggle.addEventListener('click', () => setTheme(!document.body.classList.contains('dark')));
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            links.forEach(link => {
+              const active = link.getAttribute('href') === '#' + entry.target.id;
+              link.classList.toggle('active', active);
+              if (active) link.setAttribute('aria-current', 'location');
+              else link.removeAttribute('aria-current');
+            });
+          });
+        }, { rootMargin: '-12% 0px -70% 0px' });
+        sections.forEach(section => observer.observe(section));
+      }
+    })();
+  </script>
+</body>
+</html>
